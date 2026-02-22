@@ -53,7 +53,7 @@ Claude API → analyzes data, returns { textAnswer, chartData, chartType }
 
 - Node.js 18+
 - npm
-- An Anthropic API key - Already in place or [get one here](https://console.anthropic.com/)
+- An Anthropic API key - [get one here](https://console.anthropic.com/)
 
 ### Backend
 
@@ -79,10 +79,10 @@ Runs at `http://localhost:4200`
 
 ### Environment Variables
 
-| Variable            | Description             | Default   |
-|---------------------|-------------------------|-----------|
-| `ANTHROPIC_API_KEY` | Your Anthropic API key  | IN PLACE  |
-| `PORT`              | Backend server port     | 3000      |
+| Variable            | Description             | Default |
+|---------------------|-------------------------|---------|
+| `ANTHROPIC_API_KEY` | Your Anthropic API key  | -       |
+| `PORT`              | Backend server port     | 3000    |
 
 ## Usage
 
