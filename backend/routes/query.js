@@ -18,6 +18,8 @@ router.post('/', async (req, res) => {
 
     const data = req.app.locals.currentData;
     const columns = req.app.locals.currentColumns;
+    const dataStats = req.app.locals.currentStats;
+    const aggregations = req.app.locals.currentAggregations;
 
     if (!data || !data.length) {
       return res.status(400).json({
@@ -27,7 +29,7 @@ router.post('/', async (req, res) => {
       });
     }
 
-    const prompt = buildPrompt(question.trim(), data, columns);
+    const prompt = buildPrompt(question.trim(), data, columns, dataStats, aggregations);
     const result = await queryClaude(prompt);
 
     res.json({

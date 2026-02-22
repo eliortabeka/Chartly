@@ -8,7 +8,7 @@ export interface UploadResponse {
     columns: string[];
     preview: Record<string, any>[];
     totalRows: number;
-    truncated: boolean;
+    analyzedRows: number;
   };
   error?: string;
   code?: string;

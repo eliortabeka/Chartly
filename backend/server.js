@@ -17,6 +17,8 @@ app.use(express.json({ limit: '50mb' }));
 // In-memory data store
 app.locals.currentData = null;
 app.locals.currentColumns = null;
+app.locals.currentStats = null;
+app.locals.currentAggregations = null;
 
 // Routes
 app.use('/api/upload', uploadRouter);
@@ -37,6 +39,7 @@ app.get('/api/data', (req, res) => {
       columns,
       preview: data.slice(0, 10),
       totalRows: data.length,
+      analyzedRows: data.length,
     },
   });
 });

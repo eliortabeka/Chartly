@@ -1,8 +1,8 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
+const { analyzeData, preAggregate } = require('./dataAnalyzer');
 
-const MAX_ROWS = 1000;
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 function parseFile(filePath, originalName) {
@@ -32,19 +32,22 @@ function parseExcel(filePath) {
     throw new Error('EMPTY_DATA');
   }
 
-  const limited = jsonData.slice(0, MAX_ROWS);
-  const columns = Object.keys(limited[0]);
+  const columns = Object.keys(jsonData[0]);
+
+  // Compute full-dataset statistics — this is what enables large file support
+  const dataStats = analyzeData(jsonData, columns);
+  const aggregations = preAggregate(jsonData, columns, dataStats.columns);
 
   return {
-    data: limited,
+    data: jsonData,
     columns,
     totalRows: jsonData.length,
-    truncated: jsonData.length > MAX_ROWS,
+    dataStats,
+    aggregations,
   };
 }
 
 function parseCSV(filePath) {
-  // Use xlsx to parse CSV as well — it handles CSV natively
   const workbook = XLSX.readFile(filePath, { type: 'file' });
   const sheetName = workbook.SheetNames[0];
   const sheet = workbook.Sheets[sheetName];
@@ -54,14 +57,17 @@ function parseCSV(filePath) {
     throw new Error('EMPTY_DATA');
   }
 
-  const limited = jsonData.slice(0, MAX_ROWS);
-  const columns = Object.keys(limited[0]);
+  const columns = Object.keys(jsonData[0]);
+
+  const dataStats = analyzeData(jsonData, columns);
+  const aggregations = preAggregate(jsonData, columns, dataStats.columns);
 
   return {
-    data: limited,
+    data: jsonData,
     columns,
     totalRows: jsonData.length,
-    truncated: jsonData.length > MAX_ROWS,
+    dataStats,
+    aggregations,
   };
 }
 

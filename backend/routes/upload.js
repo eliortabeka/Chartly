@@ -47,9 +47,11 @@ router.post('/', upload.single('file'), (req, res) => {
 
     const result = parseFile(req.file.path, req.file.originalname);
 
-    // Store data in app-level state
+    // Store full data + statistics in app-level state
     req.app.locals.currentData = result.data;
     req.app.locals.currentColumns = result.columns;
+    req.app.locals.currentStats = result.dataStats;
+    req.app.locals.currentAggregations = result.aggregations;
 
     // Clean up uploaded file
     fs.unlinkSync(req.file.path);
@@ -60,7 +62,7 @@ router.post('/', upload.single('file'), (req, res) => {
         columns: result.columns,
         preview: result.data.slice(0, 10),
         totalRows: result.totalRows,
-        truncated: result.truncated,
+        analyzedRows: result.totalRows,
       },
     });
   } catch (error) {
