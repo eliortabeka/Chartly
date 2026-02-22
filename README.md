@@ -57,8 +57,6 @@ Claude API → analyzes data, returns { textAnswer, chartData, chartType }
 
 ```bash
 cd backend
-# Add this API key to .env:
-#   ANTHROPIC_API_KEY=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
 npm install
 npm start
 ```
