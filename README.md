@@ -14,6 +14,8 @@ Chartly is a full-stack web app that lets you upload Excel or CSV files and have
 - **Auto visualizations** - bar, pie, and line charts generated based on your question
 - **Light & dark themes** - toggle between themes, persisted in localStorage
 - **Cancel requests** - stop a running query and remove it from chat history
+- **Copy answers** - hover any message to copy its text to clipboard
+- **Edit questions** - edit a previous question to re-ask it, clearing all subsequent messages
 - **Responsive design** - works across desktop, tablet, and mobile
 - **Markdown rendering** - bot responses support full markdown formatting
 
