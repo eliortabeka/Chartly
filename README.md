@@ -53,7 +53,7 @@ Claude API → analyzes data, returns { textAnswer, chartData, chartType }
 
 - Node.js 18+
 - npm
-- An Anthropic API key - [get one here](https://console.anthropic.com/)
+- An Anthropic API key - Already in place or [get one here](https://console.anthropic.com/)
 
 ### Backend
 
