@@ -9,9 +9,6 @@
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/robusta.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.env.example" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/routes/query.js" afterDir="false" />
@@ -56,6 +53,9 @@
       <change afterPath="$PROJECT_DIR$/frontend/tsconfig.spec.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/logo.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sample_data/sales_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.env.example" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +65,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "eliortabeka"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/eliortabeka/robusta.git",
+    "accountId": "509a8559-04b9-4bba-b45c-df1be05f7801"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 7
 }]]></component>
@@ -103,7 +115,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1771755382883</updated>
-      <workItem from="1771755383902" duration="12773000" />
+      <workItem from="1771755383902" duration="12983000" />
     </task>
     <servers />
   </component>
