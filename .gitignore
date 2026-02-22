@@ -7,3 +7,4 @@ backend/uploads/
 .angular/
 .vscode/
 .idea/
+.DS_Store
