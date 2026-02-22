@@ -1,0 +1,33 @@
+@if (config()) {
+  <div class="chart-container">
+    <canvas
+      baseChart
+      [type]="config()!.type"
+      [data]="config()!.data"
+      [options]="config()!.options"
+    ></canvas>
+  </div>
+}
+
+@if (tableColumns().length) {
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          @for (col of tableColumns(); track col) {
+            <th>{{ col }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of tableRows(); track $index) {
+          <tr>
+            @for (col of tableColumns(); track col) {
+              <td>{{ row[col] }}</td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

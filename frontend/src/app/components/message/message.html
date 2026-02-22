@@ -1,0 +1,50 @@
+<div class="message" [class.user]="message().role === 'user'" [class.bot]="message().role === 'bot'">
+  <div class="avatar">
+    @if (message().role === 'user') {
+      <span>You</span>
+    } @else {
+      <span><img src="/logo.svg" alt="Chartly"></span>
+    }
+  </div>
+  <div class="content">
+    @if (editing()) {
+      <div class="edit-area">
+        <textarea
+          [ngModel]="editText()"
+          (ngModelChange)="editText.set($event)"
+          (keydown)="onEditKeyDown($event)"
+          rows="2"
+        ></textarea>
+        <div class="edit-actions">
+          <button class="edit-cancel" (click)="cancelEdit()">Cancel</button>
+          <button class="edit-submit" (click)="submitEdit()" [disabled]="!editText().trim()">Send</button>
+        </div>
+      </div>
+    } @else {
+      <div class="text" [innerHTML]="renderedHtml"></div>
+      @if (message().chartData?.length && message().chartType && message().chartType !== 'none') {
+        <app-visualization [chartData]="message().chartData!" [chartType]="message().chartType!" />
+      }
+      <div class="message-actions">
+        @if (message().role === 'user') {
+          <button class="action-btn" (click)="startEdit()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+            </svg>
+          </button>
+        }
+        <button class="action-btn" (click)="copyText()" [class.copied]="copied()">
+          @if (copied()) {
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+          } @else {
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          }
+        </button>
+      </div>
+    }
+  </div>
+</div>

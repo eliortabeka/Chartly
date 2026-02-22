@@ -1,0 +1,109 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #faf8f5;
+  --bg-secondary: #fffefa;
+  --bg-tertiary: #f5f1ec;
+  --bg-hover: rgba(120, 100, 70, 0.04);
+  --bg-subtle: rgba(120, 100, 70, 0.06);
+  --bg-input: #fffefa;
+
+  --text-primary: #2c2418;
+  --text-secondary: #3d3428;
+  --text-muted: #8a7e6e;
+  --text-faint: #b5aa98;
+
+  --border-primary: rgba(120, 100, 70, 0.12);
+  --border-subtle: rgba(120, 100, 70, 0.06);
+
+  --shadow-sm: 0 1px 3px rgba(100, 80, 50, 0.06);
+  --shadow-md: 0 4px 16px rgba(100, 80, 50, 0.08);
+
+  --accent: #8b5cf6;
+  --accent-secondary: #6366f1;
+  --accent-hover: #7c3aed;
+  --accent-bg: rgba(139, 92, 246, 0.07);
+  --accent-bg-hover: rgba(139, 92, 246, 0.12);
+  --accent-text: #7c3aed;
+  --accent-border: rgba(139, 92, 246, 0.25);
+
+  --sidebar-bg: #fffefa;
+  --sidebar-border: rgba(120, 100, 70, 0.08);
+
+  --chart-border: #fffefa;
+  --code-bg: #2c2418;
+  --code-text: #ede8e0;
+
+  --scrollbar-thumb: rgba(120, 100, 70, 0.15);
+  --scrollbar-thumb-hover: rgba(120, 100, 70, 0.25);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #222240;
+  --bg-tertiary: #2a2a4a;
+  --bg-hover: rgba(255, 255, 255, 0.04);
+  --bg-subtle: rgba(255, 255, 255, 0.06);
+  --bg-input: #222240;
+
+  --text-primary: #ededf0;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-faint: rgba(255, 255, 255, 0.3);
+
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+
+  --accent-bg: rgba(139, 92, 246, 0.14);
+  --accent-bg-hover: rgba(139, 92, 246, 0.22);
+  --accent-text: #b49cfa;
+  --accent-border: rgba(139, 92, 246, 0.35);
+
+  --sidebar-bg: #1e1e36;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+
+  --chart-border: rgba(26, 26, 46, 0.8);
+  --code-bg: rgba(0, 0, 0, 0.3);
+
+  --scrollbar-thumb: rgba(255, 255, 255, 0.12);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.22);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+
+  &:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.15);
+}

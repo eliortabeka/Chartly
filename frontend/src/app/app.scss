@@ -1,0 +1,104 @@
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-primary);
+  padding: 50px 20px;
+}
+.fixed-heder {
+  position: absolute;
+  top: 18px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  right: 0;
+
+  .header-buttons {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+// Fixed logo — top left
+.fixed-logo {
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+
+  .logo-icon {
+    width: 22px;
+  }
+
+  span {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+}
+
+// Fixed new chat — top right
+.fixed-new-chat {
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px 8px 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: var(--accent-bg);
+    border-color: var(--accent-border);
+    color: var(--accent-text);
+  }
+}
+
+// Fixed theme toggle — bottom right
+.fixed-theme-toggle {
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background: var(--accent-bg);
+    color: var(--accent-text);
+    border-color: var(--accent-border);
+  }
+}
+
+// Main
+.app-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}

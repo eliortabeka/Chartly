@@ -1,0 +1,73 @@
+<div class="upload-container">
+  <div class="hero">
+    <h1>Analyze your data with AI</h1>
+    <p class="hero-description">
+      Upload a spreadsheet and start asking questions in plain English.
+      Get instant answers with auto-generated charts and insights.
+    </p>
+  </div>
+
+  <div
+    class="drop-zone"
+    [class.drag-over]="isDragOver()"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave()"
+    (drop)="onDrop($event)"
+    (click)="fileInput.click()"
+  >
+    @if (isUploading()) {
+      <div class="uploading">
+        <div class="spinner"></div>
+        <p>Processing file...</p>
+      </div>
+    } @else {
+      <div class="drop-zone-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+      </div>
+      <p class="drop-zone-title">Drag & drop your file here</p>
+      <p class="drop-zone-subtitle">or click to browse</p>
+      <span class="file-types">.xlsx, .xls, .csv</span>
+    }
+  </div>
+
+  <input
+    #fileInput
+    type="file"
+    accept=".xlsx,.xls,.csv"
+    (change)="onFileSelected($event)"
+    hidden
+  />
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  <div class="features">
+    <div class="feature">
+      <span class="feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </span>
+      <div>
+        <strong>Ask in plain English</strong>
+        <p>No formulas or code needed</p>
+      </div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+      </span>
+      <div>
+        <strong>Auto-generated charts</strong>
+        <p>Bar, pie, line and table views</p>
+      </div>
+    </div>
+  </div>
+</div>

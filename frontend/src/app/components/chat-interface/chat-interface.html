@@ -1,0 +1,88 @@
+<div class="chat-container">
+  <div class="messages" #scrollContainer>
+    @if (!data.messages().length) {
+      <div class="empty-state">
+        <div class="empty-state-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/>
+          </svg>
+        </div>
+        <h3>Your data is ready</h3>
+        <p>Ask anything about your dataset — get answers and visualizations instantly</p>
+        <div class="suggestions">
+          <button (click)="question.set('What are the top 5 items by value?'); sendQuestion()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+            Top 5 items by value
+          </button>
+          <button (click)="question.set('Show me the distribution by category'); sendQuestion()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/>
+            </svg>
+            Distribution by category
+          </button>
+          <button (click)="question.set('What is the total and average?'); sendQuestion()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            Total and average
+          </button>
+          <button (click)="question.set('Show a summary of the data'); sendQuestion()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
+            </svg>
+            Summary of the data
+          </button>
+        </div>
+      </div>
+    }
+
+    @for (msg of data.messages(); track $index) {
+      <app-message [message]="msg" (editMessage)="onEditMessage($index, $event)" />
+    }
+
+    @if (data.isLoading()) {
+      <div class="loading-message">
+        <div class="avatar"><span><img src="/logo.svg" alt="Chartly"></span></div>
+        <div class="typing-indicator">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="input-area">
+    <div class="input-glow-wrapper">
+      <div class="input-wrapper">
+        <textarea
+          [(ngModel)]="question"
+          (keydown)="onKeyDown($event)"
+          placeholder="Ask a question about your data..."
+          rows="1"
+          [disabled]="data.isLoading()"
+        ></textarea>
+        @if (data.isLoading()) {
+          <button
+            class="send-btn stop-btn"
+            (click)="stopQuestion()"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="4" y="4" width="16" height="16" rx="3"/>
+            </svg>
+          </button>
+        } @else {
+          <button
+            class="send-btn"
+            (click)="sendQuestion()"
+            [disabled]="!question().trim()"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>
+            </svg>
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</div>

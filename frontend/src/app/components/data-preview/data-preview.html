@@ -1,0 +1,29 @@
+<div class="preview-container">
+  <div class="preview-header">
+    <div class="info">
+      <h3>Data Preview</h3>
+      <span class="row-count">Showing {{ data.preview().length }} of {{ data.totalRows() }} rows</span>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          @for (col of data.columns(); track col) {
+            <th>{{ col }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of data.preview(); track $index) {
+          <tr>
+            @for (col of data.columns(); track col) {
+              <td>{{ row[col] }}</td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
